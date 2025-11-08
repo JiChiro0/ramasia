@@ -1,0 +1,469 @@
+/* ===================================
+   Ramasia Modal Styles
+   Login & Sign-Up Modals
+   =================================== */
+
+:root {
+  --ramasia-red: #C51028;
+  --ramasia-light-gray: #f5f5f5;
+  --ramasia-white: #ffffff;
+  --modal-border-radius: 12px;
+  --modal-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Modal Backdrop
+   =================================== */
+.ra-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.ra-modal-backdrop.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===================================
+   Modal Container
+   =================================== */
+.ra-modal-container {
+  background-color: var(--ramasia-white);
+  border-radius: var(--modal-border-radius);
+  box-shadow: var(--modal-shadow);
+  width: 900px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  display: none;
+  font-family: 'Sarala', sans-serif;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+.ra-modal-container.active {
+  display: flex;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Modal Header Label (top-left) */
+.ra-modal-header-label {
+  position: absolute;
+  top: 12px;
+  left: 20px;
+  font-size: 11px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  font-weight: 400;
+}
+
+/* Close Button (top-right) */
+.ra-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--ramasia-red);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.ra-modal-close:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px rgba(197, 16, 40, 0.6);
+}
+
+.ra-modal-close:active {
+  transform: scale(1.05);
+}
+
+/* ===================================
+   Modal Grid Layout (50/50 split)
+   =================================== */
+.ra-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 500px;
+  width: 100%;
+}
+
+/* ===================================
+   Left Panel - Visual/Welcome Section
+   =================================== */
+.ra-modal-visual {
+  background-color: #888;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 40px 30px;
+  overflow: hidden;
+}
+
+.ra-modal-visual::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+  z-index: 1;
+}
+
+/* Login modal background */
+#ra-login-modal .ra-modal-visual {
+  background-image: url('../image-source/login-bg.jpg');
+}
+
+/* Sign-up modal background */
+#ra-signup-modal .ra-modal-visual {
+  background-image: url('../image-source/signup-bg.jpg');
+}
+
+.ra-modal-visual-content {
+  position: relative;
+  z-index: 2;
+  margin-top: 40px;
+}
+
+.ra-modal-visual-content h3 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  position: relative;
+  padding-left: 24px;
+}
+
+.ra-modal-visual-content h3::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 45px;
+  background-color: var(--ramasia-red);
+  border-radius: 2px;
+}
+
+.ra-modal-visual-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+  color: rgba(255, 255, 255, 0.95);
+  padding-left: 24px;
+}
+
+.ra-modal-visual-content .ra-btn-switch {
+  margin-left: 24px;
+}
+
+/* Logo at bottom-left */
+.ra-modal-logo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.ra-modal-logo img {
+  width: 60px;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+.ra-modal-logo span {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+}
+
+/* ===================================
+   Right Panel - Form Section
+   =================================== */
+.ra-modal-form {
+  padding: 70px 50px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.ra-modal-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ramasia-red);
+  margin: 0 0 35px 0;
+  text-align: center;
+}
+
+/* Form Groups */
+.ra-form-group {
+  margin-bottom: 24px;
+}
+
+.ra-form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.ra-form-group input,
+.ra-form-group select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Sarala', sans-serif;
+  color: #333;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ra-form-group input:focus,
+.ra-form-group select:focus {
+  outline: none;
+  border-color: var(--ramasia-red);
+  box-shadow: 0 0 0 3px rgba(197, 16, 40, 0.1);
+}
+
+.ra-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+  border-color: var(--ramasia-red);
+}
+
+/* Checkbox Row */
+.ra-form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 16px;
+}
+
+.ra-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.ra-checkbox-wrapper input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--ramasia-red);
+  flex-shrink: 0;
+}
+
+.ra-checkbox-wrapper label {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ra-forgot-link {
+  color: #888;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.ra-forgot-link:hover {
+  color: var(--ramasia-red);
+  text-decoration: underline;
+}
+
+/* Buttons */
+.ra-btn-switch {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Sarala', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.ra-btn-switch:hover {
+  background-color: white;
+  color: var(--ramasia-red);
+}
+
+.ra-btn-primary {
+  background-color: var(--ramasia-red);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Sarala', sans-serif;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s ease;
+  margin-top: 10px;
+}
+
+.ra-btn-primary:hover {
+  background-color: #a50d22;
+}
+
+.ra-btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* ===================================
+   Modal Animation
+   =================================== */
+@keyframes raModalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes raModalFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.ra-modal-container.ra-fade-in {
+  animation: raModalFadeIn 0.4s ease-in-out forwards;
+}
+
+.ra-modal-container.ra-fade-out {
+  animation: raModalFadeOut 0.3s ease-in-out forwards;
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+  .ra-modal-grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .ra-modal-visual {
+    display: none;
+  }
+
+  .ra-modal-form {
+    padding: 50px 30px 30px;
+    max-height: none;
+  }
+
+  .ra-modal-container {
+    width: 95vw;
+    max-height: 95vh;
+  }
+
+  .ra-modal-title {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .ra-form-group {
+    margin-bottom: 20px;
+  }
+
+  .ra-form-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ra-forgot-link {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .ra-modal-form {
+    padding: 40px 24px 24px;
+  }
+
+  .ra-modal-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  .ra-modal-close {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .ra-modal-header-label {
+    font-size: 10px;
+    top: 10px;
+    left: 16px;
+  }
+}

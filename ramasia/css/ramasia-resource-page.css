@@ -1,0 +1,662 @@
+/* ===================================
+   Ramasia Resources Page Styles
+   =================================== */
+
+:root {
+  --ramasia-red: #C51028;
+  --ramasia-light-gray: #f5f5f5;
+  --ramasia-white: #ffffff;
+  --text-dark: #1b1b1b;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Sarala', sans-serif;
+  color: var(--text-dark);
+  background: var(--ramasia-white);
+}
+
+/* ===================================
+   Resources Page Navbar Overrides
+   =================================== */
+/* Make navbar static (not overlay) on resources page only */
+body.resources-page .ra-navbar {
+  position:fixed !important;
+  width: 100%;
+}
+
+body.resources-page .ra-navbar .ra-bar {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 28px;
+}
+
+/* ===================================
+   Hero Section
+   =================================== */
+.resources-hero {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resources-hero-title {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--ramasia-red);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  margin-top: 5rem;
+}
+
+.resources-hero-subtitle {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 40px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.resources-hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.resources-btn-primary {
+  background-color: var(--ramasia-red);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.resources-btn-primary:hover {
+  background-color: #a50d22;
+}
+
+.resources-btn-outline {
+  background-color: transparent;
+  color: var(--ramasia-red);
+  border: 2px solid var(--ramasia-red);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.resources-btn-outline:hover {
+  background-color: var(--ramasia-red);
+  color: white;
+}
+
+.resources-hero-image {
+  width: 100%;
+  max-width: 1200px;
+  height: 300px;
+  background-color: var(--ramasia-light-gray);
+  border-radius: 12px;
+  margin: 0 auto;
+  display: block;
+}
+
+* /*===================================
+   Hero Section
+   =================================== */
+.resources-hero {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resources-hero-title {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: var(--ramasia-red);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  margin-top: 5rem;
+}
+
+.resources-hero-subtitle {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--text-muted);
+  margin: 0 0 40px 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.resources-hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.resources-btn-primary {
+  background-color: var(--ramasia-red);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.resources-btn-primary:hover {
+  background-color: #a50d22;
+}
+
+.resources-btn-outline {
+  background-color: transparent;
+  color: var(--ramasia-red);
+  border: 2px solid var(--ramasia-red);
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.resources-btn-outline:hover {
+  background-color: var(--ramasia-red);
+  color: white;
+}
+
+.resources-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+
+
+
+/* ===================================
+   More Resources Section
+   =================================== */
+.resources-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resources-section-title {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--text-dark);
+  margin: 0 0 40px 0;
+}
+
+.resources-section-title .arrow {
+  color: var(--ramasia-red);
+  margin-left: 8px;
+}
+
+.resources-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.resources-card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-items: start;
+}
+
+.resources-card-image {
+  width: 100%;
+  height: 200px;
+  background-color: var(--ramasia-light-gray);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.resources-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.resources-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.resources-card-title {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.resources-card-description {
+  font-family: 'Sarala', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.resources-card-btn {
+  background-color: var(--ramasia-red);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Sarala', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  transition: background-color 0.2s ease;
+}
+
+.resources-card-btn:hover {
+  background-color: #a50d22;
+}
+
+/* ===================== */
+/* Footer Section */
+/* ===================== */
+.footer-section {
+  background: #C51028;
+  color: #fff;
+  padding: 60px 0 0;
+  margin-top: 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-main {
+  max-width: 350px;
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer-description {
+  color: #f0f0f0;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: #fff;
+  color: #222;
+  transform: translateY(-2px);
+}
+
+.footer-heading {
+  font-family: "Sarala", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #FFCE1B;
+  padding-left: 5px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 24px 0;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copyright {
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #FFCE1B;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+/* Footer Responsive Design */
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .footer-main {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 40px 0 0;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-main {
+    order: -1;
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .footer-legal {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 0 15px;
+  }
+  
+  .footer-content {
+    gap: 25px;
+  }
+  
+  .footer-logo-img {
+    height: 50px;
+    max-width: 150px;
+  }
+  
+  .footer-description {
+    font-size: 0.9rem;
+  }
+  
+  .footer-heading {
+    font-size: 1rem;
+  }
+  
+  .footer-links a,
+  .contact-item {
+    font-size: 0.85rem;
+  }
+  
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .footer-legal {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .separator {
+    display: none;
+  }
+}
+
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+  .resources-hero {
+    padding: 60px 20px;
+  }
+
+  .resources-hero-title {
+    font-size: 36px;
+  }
+
+  .resources-hero-subtitle {
+    font-size: 16px;
+  }
+
+  .resources-hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resources-btn-primary,
+  .resources-btn-outline {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .resources-hero-image {
+    height: 250px;
+  }
+
+  .resources-section {
+    padding: 60px 20px;
+  }
+
+  .resources-section-title {
+    font-size: 28px;
+  }
+
+  .resources-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .resources-card-image {
+    height: 180px;
+  }
+
+  .resources-card-title {
+    font-size: 18px;
+  }
+
+  .resources-card-description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resources-hero-title {
+    font-size: 28px;
+  }
+
+  .resources-hero-subtitle {
+    font-size: 15px;
+  }
+
+  .resources-section-title {
+    font-size: 24px;
+  }
+
+  .resources-card {
+    padding: 20px;
+  }
+}
+

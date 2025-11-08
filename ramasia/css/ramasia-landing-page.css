@@ -1,0 +1,1298 @@
+/* Reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Force remove any top spacing */
+body {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* PREVENT HORIZONTAL SCROLL: Stop white spaces from horizontal overflow */
+  width: 100%;
+  max-width: 100vw; /* VIEWPORT WIDTH: Ensure content doesn't exceed viewport */
+  margin: 0; /* REMOVE DEFAULT MARGINS: Eliminate white space at top */
+  padding: 0; /* REMOVE DEFAULT PADDING: Ensure no spacing */
+}
+
+/* Sarala Font Classes */
+.sarala-regular {
+  font-family: "Sarala", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sarala-bold {
+  font-family: "Sarala", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Norwester Font */
+@font-face {
+  font-family: 'Norwester';
+  src: url('../fonts/norwester.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ===========================
+   HEADER & NAVBAR
+   Removed - using shared ra-navbar instead
+   =========================== */
+
+/* Hero section with background image */
+.hero {
+  height: 100vh; /* FULL HEIGHT: Back to full viewport height */
+  background: url('../../image-source/landing-bg.jpg') no-repeat center center/cover;
+  background-color: #f0f0f0; /* background color lang, image is still the main background*/
+  display: flex; 
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  padding: 60px 0 140px 75px; /* space for overlay */
+  position: relative; /* For overlay positioning */
+  width: 100%; /* FULL WIDTH: Ensure hero takes full width */
+  max-width: 100vw; /* VIEWPORT CONSTRAINT: Prevent overflow */
+  overflow: hidden; /* HIDE OVERFLOW: Prevent content from spilling out */
+  margin-top: 0; /* NO TOP MARGIN: Start from very top */
+}
+
+/* Semi-transparent black overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1; 
+}
+
+/* Ensure content stays above overlay */
+.hero-content {
+  max-width: 1000px;
+  width: 100%;
+  margin-bottom: 3rem;
+  position: relative; /* Above the overlay or stays relative to the background image */
+  z-index: 2;
+}
+
+.hero h2 {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Norwester', sans-serif;
+  font-weight: 400;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 1.3;
+  
+}
+
+.hero p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: left;
+}
+
+/* Partnership overlay inside hero */
+.hero-partnership-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 40px; /* MOVED DOWN: Reduced from 80px to move carousel lower */
+  transform: translateX(-50%);
+  width: 100%;
+  /* 🔧 CONTAINER WIDTH ADJUSTMENT: Change this value to adjust overall carousel container width */
+  max-width: 1000px; /* INCREASED WIDTH: Slightly wider for better balance */
+  padding: 0 20px;
+  z-index: 3; /* above the hero::before dark overlay */
+  box-sizing: border-box; /* INCLUDE PADDING: Ensure padding doesn't cause overflow */
+}
+
+/* Partnership title centered above card */
+.partnership-title {
+  text-align: center;
+  color: #ffffff;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Actor", sans-serif;
+}
+
+.btn {
+  padding: 1rem 3rem;
+  background: #C51028;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: 0.3s;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background: #FFCE1B;
+  color: #111;
+  transform: translateY(-2px);
+}
+
+/* =================== Latest Jobs =================== */
+.latest-jobs {
+  background: #fff;
+  padding: 90px 20px; /* taller spacing */
+  min-height: 65vh; /* increase section height */
+}
+
+.lj-container { max-width: 1200px; margin: 0 auto; }
+.lj-heading { color: #C51028; margin-bottom: 18px; }
+
+.jobs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.job-card {
+  flex: 1 1 calc(25% - 20px);
+  min-width: 240px;
+  min-height: 360px; /* taller cards */
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 20px; /* a bit more breathing room */
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.job-card-header { display: flex; justify-content: space-between; align-items: start; }
+.job-title { font-size: 0.95rem; color: #111; font-weight: 700;}
+.bookmark { background: transparent; border: none; cursor: pointer; font-size: 1rem; color: #111; transition: transform 0.15s ease, color 0.15s ease; }
+.bookmark:hover, .bookmark:focus-visible { color: #C51028; transform: scale(1.1); }
+
+.job-meta { list-style: none; color: #666; display: grid; gap: 2rem; font-size: 0.9rem; margin-top: 0.8rem; }
+.job-meta li svg { margin-right: 6px; vertical-align: -2px; }
+.job-cta { align-self: center; margin-top: auto; background: #C51028; color: #fff; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; }
+.job-cta:hover { background: #a00d20; transform: translateY(-2px); }
+
+.view-more-card {
+  flex: 1 1 calc(25% - 20px);
+  min-width: 240px;
+  border: 2px solid #e6e6e6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #C51028;
+  text-decoration: none;
+  gap: 6px;
+}
+.view-more-card:hover { background: #C51028; color: #fff; box-shadow: 0 8px 20px rgba(197,16,40,0.3); transform: translateY(-3px); }
+.view-more-card:hover .vm-icon { border-color: #fff; color: #fff; }
+.vm-icon { font-size: 1.6rem; border: 2px solid #C51028; border-radius: 999px; width: 44px; height: 44px; display: grid; place-items: center; }
+
+/* =================== Process =================== */
+.process {
+  position: relative;
+  background: url('../image-source/recruitment-process-bg.jpg') center/cover no-repeat;
+  /* BOTTOM MARGIN ADJUSTMENT: Change bottom padding value (60px) to increase/decrease bottom spacing */
+  padding: 60px 20px 2px 20px;
+  color: #fff;
+  min-height: 100vh; /* taller second container */
+}
+
+/*--------OVERLAY---------*/
+.process-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.65); }
+/* ADJUSTMENT POINT: Change margin-top value below to move "Our Recruitment Process" section content up/down */
+.process-container { position: relative; max-width: 1200px; margin: 0 auto; margin-top: 15rem; }
+.process-heading { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif; font-size: 4rem; margin-bottom: 1.5rem; font-weight: 400;}
+.process-sub { margin-bottom: 22px; opacity: 0.95; }
+
+.process-steps { display: flex; gap: 0; flex-wrap: wrap; }
+.step-card {
+  position: relative;
+  flex: 1 1 25%;
+  min-width: 300px;
+  background: #C51028;
+  border: none; 
+  border-radius: 0;
+  padding: 18px 18px 24px 18px;
+  backdrop-filter: blur(2px);
+  height: 14rem;
+  margin-bottom: 30px;
+}
+.step-icon { font-size: 28px; margin-bottom: 8px; }
+.step-header { display: flex; align-items: center; gap: 10px; }
+.step-title { font-size: 1.05rem; margin: 0; }
+.step-text { font-size: 0.95rem; color: #f0f0f0; }
+.step-cta { background: #fff; color: #C51028; border: none; padding: 10px 14px; border-radius: 8px; margin-top: 10px; cursor: pointer; }
+.step-cta:hover { background: #FFCE1B; color: #111; transform: translateY(-2px); }
+.step-num { position: absolute; left: 50%; transform: translateX(-50%); bottom: 30px; width: 34px; height: 34px; border-radius: 999px; background: #ffff; color: #C51028; display: grid; place-items: center; font-weight:600; }
+
+/* 4th CTA card */
+.step-card-cta {
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+.step-card-cta .cta-text { color: #C51028; font-weight: 600; }
+.cta-circle { width: 50px; height: 50px; border-radius: 999px; border: 2px solid #C51028; color: #C51028; display: grid; place-items: center; font-size: 1.2rem; }
+.step-card-cta:hover { background: #C51028; }
+.step-card-cta:hover .cta-text { color: #fff;}
+.step-card-cta:hover .cta-circle { background: #C51028; color: #fff; border: 2px solid #fff;}
+
+/* Partnership section (inside hero) */
+.partnership {
+  background: #ffffff;
+  color: #111111;
+  margin-top: 0.25rem;
+  margin-bottom: 0; /* REDUCED BOTTOM MARGIN: Removed bottom margin */
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  display: block;
+  width: 100%; /* full width of the centered wrapper */
+}
+
+/* PARTNERSHIP PADDING ADJUSTMENT: Minimal padding for maximum image visibility */
+.partnership-inner {
+  /* 🔧 CONTAINER PADDING ADJUSTMENT: Change these values to adjust spacing around the entire carousel */
+  padding: 0.3rem 0.1rem 0.3rem 0.1rem; /* ULTRA MINIMAL PADDING: Maximum space for logos */
+  height: auto; /* Allow content to determine height */
+}
+
+.partnership-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.partnership-carousel {
+  position: relative;
+  display: flex;
+  align-items: center; /* Back to center for proper content alignment */
+  gap: 0.25rem; /* MINIMAL GAP: Very small space between buttons and content window */
+  height: 150px; /* MAXIMIZED HEIGHT: Even more space for bigger logos */
+}
+
+.partnership-window {
+  overflow: hidden;
+  width: 100%;
+  height: 100%; /* Take full height of carousel container */
+  display: flex;
+  align-items: center; /* Center content vertically within the window */
+}
+
+.partnership-track {
+  display: flex;
+  gap: 0.2rem; /* MINIMAL GAP: Even tighter spacing for maximum logo space */
+  padding: 0; /* REMOVED PADDING: No padding for maximum image space */
+  will-change: transform;
+}
+
+.partner-item {
+  flex: 0 0 calc((100% - 2 * 0.2rem) / 3); /* UPDATED: Match the actual gap value of 0.2rem */
+  max-width: calc((100% - 2 * 0.2rem) / 3); /* Ensure consistent width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px; /* MAXIMIZED HEIGHT: Maximum space for biggest logos */
+  /* 🔧 INDIVIDUAL LOGO PADDING ADJUSTMENT: Change this value to adjust spacing around each logo */
+  padding: 0.05rem; /* MINIMAL PADDING: Maximum space for logos */
+}
+
+.partner-logo {
+  /* 🔧 LOGO SIZE ADJUSTMENT: Change this value to make logos bigger or smaller */
+  height: 125px; /* MAXIMIZED LOGOS: Much bigger size for maximum space utilization */
+  width: auto;
+  max-width: calc(100% - 0.1rem); /* MINIMAL SPACE DEDUCTION: Almost full width */
+  object-fit: contain;
+  opacity: 0.95;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.partner-logo:hover {
+  transform: translateY(-2px) scale(1.02);
+  opacity: 1;
+}
+
+/* REDESIGNED CAROUSEL BUTTONS: Match container, full height, with side borders */
+.partnership-nav {
+  background: #ffffff; /* Same as container background */
+  color: #C51028; /* Red text color */
+  border: none;
+  width: 40px; /* WIDER: Better proportion for maximized container */
+  height: 150px; /* MAXIMIZED HEIGHT: Match the maximized carousel container */
+  border-radius: 0; /* Remove rounded corners */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center; /* Center the arrow vertically */
+  justify-content: center; /* Center the arrow horizontally */
+  transition: all 0.2s ease;
+  font-size: 20px; /* LARGER FONT: Proportional to maximized button size */
+  font-weight: 600;
+  align-self: stretch; /* Ensure button takes full available height */
+}
+
+/* LEFT BUTTON: Border on right side */
+.partnership-prev {
+  border-right: 2px solid #e0e0e0; /* Right border for left button */
+}
+
+/* RIGHT BUTTON: Border on left side */  
+.partnership-next {
+  border-left: 2px solid #e0e0e0; /* Left border for right button */
+}
+
+.partnership-nav:hover {
+  background: #f8f8f8; /* Subtle hover effect */
+  color: #C51028;
+}
+
+.partnership-nav:hover.partnership-prev {
+  border-right-color: #C51028; /* Red border on hover */
+}
+
+.partnership-nav:hover.partnership-next {
+  border-left-color: #C51028; /* Red border on hover */
+}
+
+.partnership-prev,
+.partnership-next {
+  flex: 0 0 auto;
+}
+
+.partnership-nav:focus-visible {
+  outline: 3px solid #FFCE1B;
+  outline-offset: 2px;
+}
+
+.partnership-track:focus-visible {
+  outline: 3px solid #FFCE1B;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* =================== Auth Modals (namespaced) =================== */
+.ra-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+  padding: 20px;
+}
+
+.ra-backdrop.active { display: flex; }
+
+.ra-modal {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  max-width: 980px;
+  width: 100%;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.ra-modal.active { display: block; }
+
+.ra-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 2px solid #C51028;
+  background: #C51028; /* red */
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+.ra-modal-close:hover {
+  background: #ffffff;
+  color: #C51028;
+}
+
+.ra-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.ra-modal-visual {
+  position: relative;
+  background: url('modal-visual.jpg') center/cover no-repeat, #222;
+}
+
+.ra-modal-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.ra-modal-visual-content {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 12px;
+  padding: 24px;
+}
+
+.ra-modal-visual-content h3 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.ra-modal-form { padding: 32px 36px; display: flex; flex-direction: column; justify-content: center; }
+.ra-modal-title { font-family: "Sarala", sans-serif; font-weight: 700; color: #C51028; margin-bottom: 18px; }
+.ra-modal-form form { display: grid; gap: 10px; align-items: start; }
+
+.ra-modal-form label { font-size: 0.9rem; color: #333; }
+.ra-modal-form input,
+.ra-modal-form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.ra-modal-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ra-checkbox { display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #333; white-space: nowrap; }
+.ra-modal-form .ra-checkbox { align-items: center; }
+.ra-modal-form .ra-checkbox input { margin: 0; }
+.muted { color: #666; font-size: 0.9rem; text-decoration: none; }
+
+.ra-btn-primary { background: #C51028; color: #fff; border: none; padding: 10px 16px; border-radius: 8px; }
+.ra-btn-primary:hover { background: #a00d20; }
+.ra-btn-light { background: #ffffff; color: #C51028; border: 1px solid #C51028; padding: 8px 14px; border-radius: 8px; }
+.ra-btn-light:hover { background: #FFCE1B; color: #111; border-color: #FFCE1B; }
+
+@media (max-width: 900px) {
+  .ra-modal-grid { grid-template-columns: 1fr; min-height: unset; }
+  .ra-modal-visual { order: -1; height: 200px; }
+}
+
+/* MOBILE WHITE SPACE PREVENTION: Universal mobile fixes */
+@media (max-width: 768px) {
+  /* Prevent horizontal overflow on all elements */
+  *, *::before, *::after {
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  
+  /* Ensure all sections stay within viewport */
+  .hero, .latest-jobs, .process, .aa-section, .footer-section {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Fix any potential overflow from red border lines */
+  .aa-overlay::before,
+  .aa-overlay::after {
+    display: none; /* HIDE EXTENDED BORDERS: Remove on mobile to prevent overflow */
+  }
+  /* Hide desktop navigation */
+  .nav-links {
+    display: none;
+  }
+  
+  /* Show mobile menu button on mobile */
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .navbar {
+    justify-content: center;
+    position: relative;
+  }
+  
+  .logo {
+    margin-left: 0;
+  }
+  
+  .mobile-menu-btn {
+    position: absolute;
+    right: 0;
+  }
+  
+  .hero {
+    padding: 60px 40px 110px 40px; /* add bottom space for overlap */
+  }
+  
+  .hero h2 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  /* Partnership responsive */
+  .hero-partnership-overlay {
+    bottom: 30px; /* MOVED DOWN: Reduced bottom margin on tablet */
+    max-width: calc(100vw - 40px); /* VIEWPORT SAFE: Ensure container fits within viewport */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .partnership-inner {
+    padding: 0.6rem 0.2rem; /* Minimal padding on tablet for larger images */
+  }
+
+  .partnership-title {
+    font-size: 1.3rem;
+  }
+
+  .partner-logo {
+    height: 100px; /* Maximized logos on tablet */
+  }
+
+  .partnership-nav {
+    width: 32px;
+    height: 100%; /* Full height on tablet */
+    font-size: 16px;
+  }
+  /* latest jobs cards go 2-up on tablet */
+  .job-card, .view-more-card { flex: 1 1 calc(50% - 20px); }
+  .process-steps { gap: 0; }
+  .step-card { flex: 1 1 50%; }
+  /* cancel hero left padding on tablet */
+  .partnership-center {
+    width: calc(100% + 40px);
+    margin-left: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo-img {
+    height: 35px;
+    max-width: 120px;
+  }
+  
+  .hamburger-line {
+    width: 20px;
+    height: 2px;
+  }
+  
+  .hero {
+    padding: 60px 20px 90px 20px; /* add bottom space for overlap */
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Partnership extra small */
+  .hero-partnership-overlay {
+    bottom: 20px; /* MOVED DOWN: Reduced bottom margin on mobile */
+    max-width: calc(100vw - 20px); /* VIEWPORT SAFE: Mobile container fits within viewport */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .partnership {
+    margin-top: 0;
+    border-radius: 10px;
+  }
+
+  .partnership-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .partner-logo {
+    height: 80px; /* Maximized logos on mobile */
+  }
+  /* latest jobs cards stack on mobile */
+  .job-card, .view-more-card { flex: 1 1 100%; }
+  .step-card { flex: 1 1 100%; }
+  /* cancel hero left padding on mobile */
+  .partnership-center {
+    width: calc(100% + 20px);
+    margin-left: -20px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .nav-links {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: flex;
+  }
+  
+  .mobile-menu {
+    padding-top: 60px;
+  }
+  
+  .mobile-nav-links {
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+/* ===================== */
+/* About + Accreditation */
+/* ===================== */
+.aa-section {
+  width: 100%;
+  background: #fff;
+  padding: 60px 20px 60px; /* EVEN PADDING: Same top and bottom padding for consistent spacing */
+}
+
+.aa-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* EQUAL COLUMNS: Better balance for h3 and image layout */
+  gap: 40px; /* INCREASED GAP: More spacing between content and image */
+  align-items: flex-start; /* ALIGN TOP: Allow h3 to be at same level as image top */
+}
+
+.aa-heading {
+  font-size: 45px;
+  line-height: 1.2;
+  color: #C51028; /* RED COLOR: Match the design in attached image */
+  font-weight: 400; /* REGULAR WEIGHT: As requested in the image */
+  margin-bottom: 16px; /* INCREASED SPACING: More gap after heading */
+}
+
+.aa-sub {
+  font-family: "Sarala", sans-serif;
+  color: #666262; /* DARKER GRAY: Match the color shown in attached image */
+  margin-bottom: 20px; /* INCREASED SPACING: More gap between sub and text */
+  font-size: 19px;
+}
+
+.aa-text {
+  color: #666262; /* MATCHING GRAY: Same color as subtitle for consistency */
+  margin-bottom: 18px; /* INCREASED SPACING: More gap between paragraphs as shown in image */
+  line-height: 1.7;
+  font-size: 19px;
+}
+
+.aa-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; } /* INCREASED TOP MARGIN: More space before buttons */
+.aa-btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 16px; border-radius: 10px; text-decoration: none; font-family: "Sarala", sans-serif; }
+.aa-btn-primary { background: #C51028; color: #fff; }
+.aa-btn-primary:hover { background: #a00d20; }
+.aa-btn-outline { border: 1px solid #C51028; color: #C51028; background: #fff; }
+.aa-btn-outline:hover { background: #ffecee; }
+
+.aa-media { position: relative; }
+.aa-img { width: 100%; height: auto; border-radius: 5px; display: block; }
+
+.aa-badge {
+  position: absolute;
+  /* BADGE POSITIONING: Adjust these values to move badge around the image */
+  right: -45px; /* badge position left n right */
+  bottom: 40px; /* badge position up n down */
+  /* BADGE SIZE: Adjust width and height */
+  width: 150px; 
+  min-height: 120px; 
+  /* BADGE STYLING: Adjust padding and spacing */
+  padding: 16px; /* Change this to adjust internal spacing */
+  background: #C51028;
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; /* VERTICAL LAYOUT: SVG top, text below */
+  gap: 8px; /* SPACING: Adjust gap between checkmark and text */
+}
+.aa-badge-icon { 
+  width: 32px; 
+  height: 32px; 
+  /* REMOVED CIRCLE: No border or border-radius for clean checkmark */
+  display: flex; 
+  align-items: flex-start; /* ALIGN TOP LEFT: Position SVG at top-left */
+  justify-content: flex-start;
+  font-weight: 700; 
+  font-size: 24px; /* LARGER CHECKMARK: More prominent */
+}
+.aa-badge-text { 
+  font-size: 12px; 
+  line-height: 1.4; 
+  margin-top: 4px; /* SPACING: Small gap after checkmark */
+  flex: 1; /* TAKE REMAINING SPACE: Fill the rest of the badge height */
+}
+
+.aa-overlay {
+  max-width: 1200px;
+  margin: 32px auto 12px; /* INCREASED MARGINS: More space above and below */
+  background: #C51028;
+  color: #ffff;
+  border: 1px solid #C51028;
+  border-radius: 10px;
+  padding: 12px 20px; /* INCREASED PADDING: Better spacing inside */
+  width: fit-content;
+  font-family: "Sarala", sans-serif;
+  font-weight: 700;
+  position: relative;
+}
+
+/* RED BORDER LINES: Add red border lines at center sides of overlay as shown in image */
+.aa-overlay::before,
+.aa-overlay::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* CENTER VERTICALLY: Position at middle of overlay */
+  transform: translateY(-50%); /* PERFECT CENTER: Adjust for line height */
+  height: 1px;
+  width: 200px; /* MAXIMIZED LENGTH: Much longer border lines spanning more of the page */
+  background: #C51028;
+}
+
+/* LEFT BORDER LINE */
+.aa-overlay::before {
+  left: -205px; /* EXTENDED LEFT: Position further left for maximum span */
+}
+
+/* RIGHT BORDER LINE */
+.aa-overlay::after {
+  right: -205px; /* EXTENDED RIGHT: Position further right for maximum span */
+}
+
+.aa-bottom { max-width: 1200px; margin: 32px auto 0; } /* INCREASED TOP MARGIN: More space after red border line */
+.aa-logos { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; align-items: center; } /* SINGLE LINE: 6 columns for all logos in one row */
+.aa-logos img { width: 100%; height: auto; object-fit: contain; filter: grayscale(15%); }
+
+/* Responsiveness */
+@media (max-width: 992px) {
+  .aa-top { 
+    grid-template-columns: 1fr; 
+    gap: 20px; /* REDUCED GAP: Better spacing for tablet */
+    text-align: center; /* CENTER TEXT: Better alignment on tablet */
+  }
+  .aa-media { 
+    order: -1; 
+    display: none; /* HIDE IMAGE: Hide accreditation image on tablet and mobile */
+  }
+  .aa-heading { font-size: 36px; } /* ADJUST HEADING SIZE: Better proportion for tablet */
+  .aa-badge { display: none; } /* HIDE BADGE: Hide badge on tablet and mobile */
+}
+
+@media (max-width: 640px) {
+  .aa-logos { grid-template-columns: repeat(3, 1fr); gap: 16px; } /* 3 COLUMNS: Better fit for mobile */
+  .aa-section { 
+    padding: 40px 15px 20px; /* REDUCED PADDING: Better spacing for mobile */
+  }
+  .aa-heading { 
+    font-size: 28px; /* SMALLER HEADING: Better fit for mobile */
+    margin-bottom: 12px; /* REDUCED MARGIN: Tighter spacing */
+  }
+  .aa-sub { 
+    font-size: 16px; /* SMALLER SUBTITLE: Better mobile proportion */
+    margin-bottom: 16px; 
+  }
+  .aa-text { 
+    font-size: 16px; /* SMALLER TEXT: Better mobile readability */
+    margin-bottom: 14px; 
+  }
+}
+
+@media (max-width: 420px) {
+  .aa-logos { grid-template-columns: repeat(2, 1fr); gap: 12px; } /* 2 COLUMNS: Compact layout for small mobile */
+  .aa-section { 
+    padding: 30px 10px 15px; /* MINIMAL PADDING: Even tighter spacing for small mobile */
+  }
+  .aa-heading { 
+    font-size: 24px; /* SMALLER HEADING: Compact for small screens */
+    margin-bottom: 10px; 
+  }
+  .aa-sub { 
+    font-size: 14px; /* SMALLER SUBTITLE: Compact mobile */
+    margin-bottom: 12px; 
+  }
+  .aa-text { 
+    font-size: 14px; /* SMALLER TEXT: Compact mobile readability */
+    margin-bottom: 12px; 
+  }
+  .aa-actions { 
+    margin-top: 16px; /* REDUCED MARGIN: Tighter button spacing */
+  }
+}
+
+/* iPhone SE and similar small devices */
+@media (max-width: 375px) {
+  /* Header adjustments */
+  .header {
+    padding: 0.5rem 1rem;
+  }
+  
+  .logo-img {
+    height: 30px;
+    max-width: 100px;
+  }
+  
+  /* Hero section adjustments */
+  .hero {
+    padding: 50px 15px 80px 15px;
+    min-height: 100vh;
+  }
+  
+  .hero h2 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero p {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+  
+  /* Partnership carousel adjustments */
+  .hero-partnership-overlay {
+    bottom: 15px;
+    max-width: calc(100vw - 20px); /* VIEWPORT SAFE: iPhone SE container fits within viewport */
+    padding: 0 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .partnership-title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .partnership-carousel {
+    height: 100px;
+    gap: 0.15rem;
+  }
+  
+  .partnership-nav {
+    width: 28px;
+    height: 100px;
+    font-size: 14px;
+  }
+  
+  .partner-logo {
+    height: 60px;
+  }
+  
+  .partner-item {
+    height: 70px;
+    padding: 0.05rem;
+  }
+  
+  /* Latest Jobs section */
+  .latest-jobs {
+    padding: 60px 15px;
+  }
+  
+  .lj-heading {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+  
+  .job-card {
+    min-height: 320px;
+    padding: 15px;
+    gap: 1.2rem;
+  }
+  
+  .job-title {
+    font-size: 0.85rem;
+  }
+  
+  /* Process section */
+  .process {
+    padding: 100px 15px 2px 15px;
+  }
+  
+  .process-container {
+    margin-top: 12rem;
+  }
+  
+  .process-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-card {
+    min-width: 280px;
+    height: 12rem;
+    padding: 15px;
+  }
+  
+  .step-title {
+    font-size: 0.95rem;
+  }
+  
+  .step-text {
+    font-size: 0.85rem;
+  }
+  
+  /* Accreditation section */
+  .aa-section {
+    padding: 25px 10px 15px;
+  }
+  
+  .aa-heading {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  
+  .aa-sub {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+  
+  .aa-text {
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  
+  .aa-actions {
+    margin-top: 12px;
+    gap: 8px;
+  }
+  
+  .aa-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .aa-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  /* Footer adjustments */
+  .footer-section {
+    padding: 30px 0 0;
+  }
+  
+  .footer-container {
+    padding: 0 10px;
+  }
+  
+  .footer-content {
+    gap: 20px;
+  }
+  
+  .footer-logo-img {
+    height: 40px;
+    max-width: 120px;
+  }
+  
+  .footer-description {
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+  
+  .footer-heading {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+  
+  .footer-links a,
+  .contact-item {
+    font-size: 0.8rem;
+  }
+  
+  .social-link {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* ===================== */
+/* Footer Section */
+/* ===================== */
+.footer-section {
+  background: #222;
+  color: #fff;
+  padding: 60px 0 0;
+  margin-top: 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-main {
+  max-width: 350px;
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.footer-description {
+  color: #f0f0f0;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: #fff;
+  color: #C51028;
+  transform: translateY(-2px);
+}
+
+.footer-heading {
+  font-family: "Sarala", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+}
+
+.footer-links a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: #FFCE1B;
+  padding-left: 5px;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 24px 0;
+}
+
+.footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-copyright {
+  color: #f0f0f0;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: #f0f0f0;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+  color: #FFCE1B;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+/* Footer Responsive Design */
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .footer-main {
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-section {
+    padding: 40px 0 0;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-main {
+    order: -1;
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+  
+  .footer-legal {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 0 15px;
+  }
+  
+  .footer-content {
+    gap: 25px;
+  }
+  
+  .footer-logo-img {
+    height: 50px;
+    max-width: 150px;
+  }
+  
+  .footer-description {
+    font-size: 0.9rem;
+  }
+  
+  .footer-heading {
+    font-size: 1rem;
+  }
+  
+  .footer-links a,
+  .contact-item {
+    font-size: 0.85rem;
+  }
+  
+  .social-link {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .footer-legal {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .separator {
+    display: none;
+  }
+}
