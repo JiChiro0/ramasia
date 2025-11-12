@@ -1,23 +1,33 @@
+<?php
+session_start();
+require_once './vendor/autoload.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="./css/dashboard-profile.css">
     <link href="https://fonts.googleapis.com/css2?family=Sarala:wght@400&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
-                <img src="https://via.placeholder.com/120x40?text=RAMASIA+LOGO" alt="RAMASIA">
+                <img src="../image-source/transparent-ramasialredlogo-navbar.png" alt="RAMASIA">
             </div>
 
             <div class="user-info">
-                <img src="https://via.placeholder.com/60" alt="User photo" class="user-photo">
-                <h3 class="user-name">Alden Recharge Sample</h3>
+                <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2210.jpg?semt=ais_hybrid&w=740&q=80"
+                    alt="User photo" class="user-photo">
+                <h3 class="user-name"><?php echo $_SESSION["username"] ?></h3>
             </div>
 
             <nav class="menu">
@@ -27,7 +37,7 @@
                 <a href="#"><i class="icon">💬</i> Messages</a>
                 <a href="#"><i class="icon">🔒</i> Change Password</a>
                 <a href="#"><i class="icon">🗑️</i> Delete Profile</a>
-                <a href="#"><i class="icon">🚪</i> Logout</a>
+                <a href="./actions/logout.php" class="btn"><i class="icon">🚪</i>Logout</a></button>
             </nav>
         </aside>
 
@@ -45,13 +55,16 @@
             </header>
 
             <!-- Dashboard Content -->
+            <?php
+
+            ?>
             <section class="dashboard-content">
                 <h2>User Dashboard</h2>
-
                 <div class="profile-section">
                     <div class="profile-card">
-                        <img src="https://via.placeholder.com/100" alt="User photo" class="profile-pic">
-                        <h3>Alden Recharge Sample</h3>
+                        <img src="https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2210.jpg?semt=ais_hybrid&w=740&q=80"
+                            alt="User photo" class="profile-pic">
+                        <h3><?php echo $_SESSION["username"] ?></h3>
                         <p>Details</p>
                     </div>
 
@@ -87,4 +100,13 @@
         </main>
     </div>
 </body>
+
 </html>
+
+<script>
+    $(document).ready(function () {
+        $(".btn").click(function () {
+            localStorage.removeItem('token');
+        });
+    });
+</script>

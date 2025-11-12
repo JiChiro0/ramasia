@@ -32,12 +32,12 @@ body, html {
   font-family: "Sarala", sans-serif;
   font-weight: 700;
   font-style: normal;
-}
-
+} 
+/* ../fonts/norwester.otf */
 /* Norwester Font */
 @font-face {
   font-family: 'Norwester';
-  src: url('../fonts/norwester.otf') format('opentype');
+  src: url('../../fonts/norwester.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -202,9 +202,10 @@ body, html {
 .vm-icon { font-size: 1.6rem; border: 2px solid #C51028; border-radius: 999px; width: 44px; height: 44px; display: grid; place-items: center; }
 
 /* =================== Process =================== */
+/* ../image-source/recruitment-process-bg.jpg */
 .process {
   position: relative;
-  background: url('../image-source/recruitment-process-bg.jpg') center/cover no-repeat;
+  background: url('../../image-source/recruitment-process-bg.jpg') center/cover no-repeat;
   /* BOTTOM MARGIN ADJUSTMENT: Change bottom padding value (60px) to increase/decrease bottom spacing */
   padding: 60px 20px 2px 20px;
   color: #fff;

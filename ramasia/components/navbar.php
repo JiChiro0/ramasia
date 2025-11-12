@@ -3,7 +3,7 @@
     <div class="ra-bar">
       <div class="ra-nav-inner">
         <a class="ra-brand" href="ramasia-landing-page.html">
-          <img src="../image-source/ramasia - transparent - red.png" alt="Ramasia" />
+          <img src="../image-source/ramasia-transparent-red.png" alt="Ramasia" />
         </a>
         <nav class="ra-links">
           <a class="active" href="ramasia-landing-page.php">Home</a>

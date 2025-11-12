@@ -63,7 +63,7 @@ body, html {
   position: relative;
   width: 100%;
   min-height: 10vh;
-  background: url("../image-source/contact-image1.jpg") center/cover no-repeat;
+  background: url("../../image-source/contact-image1.jpg") center/cover no-repeat;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="ra-has-navbar">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +19,13 @@
   <!-- Shared Navbar JavaScript -->
   <script defer src="../ramasia-navbar.js"></script>
 </head>
+
 <body>
 
   <!-- Global Navbar -->
-    <?php
-    include_once './components/navbar.php';
-    ?>
+  <?php
+  include_once './components/navbar.php';
+  ?>
 
   <!-- ===========================
        HERO SECTION
@@ -33,8 +35,8 @@
     <div class="hero-content">
       <div class="get-in-touch">Get in touch</div>
       <h1>Contact Us</h1>
-      <div class="subtitle"><img src="../image-source/transparent-ramasialredlogo-navbar -.png" alt="RAMASIA Logo"></div>
-      
+      <div class="subtitle"><img src="../image-source/transparent-ramasialredlogo-navbar.png" alt="RAMASIA Logo"></div>
+
       <!-- Contact Cards -->
       <div class="card-container">
         <!-- Address Card -->
@@ -69,7 +71,7 @@
     <div class="container">
       <h2>NATIONWIDE BRANCHES</h2>
       <p class="subtitle">RAMASIA INTERNATIONAL MANPOWER SERVICES INC</p>
-      
+
       <div class="branches-grid">
         <!-- Cebu Branch -->
         <div class="branch-card">
@@ -168,30 +170,27 @@
           </div>
           <a href="ramasia-about-page.html" class="more-about-btn">More About Us</a>
         </div>
-          <div class="map-placeholder">
-            <!-- Google Maps Embed non-interactive; becomes interactive on first click -->
-            <div class="map-embed is-disabled" id="gmap-container" aria-label="Map to Ramasia International office">
-              <iframe
-                id="gmap-iframe"
-                title="Ramasia International Office Location"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=12th%20Floor%2C%20Suite%201208%20Ermita%20Center%20Building%2C%201350%20Roxas%20Blvd%2C%20Ermita%2C%20Manila%2C%20Philippines&output=embed">
-              </iframe>
-            </div>
+        <div class="map-placeholder">
+          <!-- Google Maps Embed non-interactive; becomes interactive on first click -->
+          <div class="map-embed is-disabled" id="gmap-container" aria-label="Map to Ramasia International office">
+            <iframe id="gmap-iframe" title="Ramasia International Office Location" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=12th%20Floor%2C%20Suite%201208%20Ermita%20Center%20Building%2C%201350%20Roxas%20Blvd%2C%20Ermita%2C%20Manila%2C%20Philippines&output=embed">
+            </iframe>
           </div>
+        </div>
       </div>
     </div>
   </section>
 
- <!-- ===========================
+  <!-- ===========================
        FOOTER SECTION
        =========================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
         <div class="footer-logo">
-          <img src="../image-source/transparent-ramasialogo-navbar.png" alt="Ramasia Logo" class="footer-logo-img">
+          <img src="../image-source/transparent-ramasialredlogo-navbar.png" alt="Ramasia Logo" class="footer-logo-img">
         </div>
         <div class="footer-info">
           <div class="footer-address">
@@ -231,260 +230,24 @@
 
 
   <!-- Page-specific JS not needed; navbar behavior is shared -->
-  <script>
-    // Enable map interactivity on first click while keeping it static by default
-    (function(){
-      const container = document.getElementById('gmap-container');
-      if (!container) return;
-      container.addEventListener('click', function(){
-        container.classList.remove('is-disabled');
-      }, { once: true });
-    })();
-  </script>
 
-  <!-- ===================================
-       Auth Modals - Login & Sign Up
-       =================================== -->
-  <div class="ra-modal-backdrop" id="ra-modal-backdrop" aria-hidden="true">
-    <!-- Login Modal -->
-    <div class="ra-modal-container" id="ra-login-modal" role="dialog" aria-modal="true" aria-labelledby="ra-login-title" tabindex="-1">
-      <button class="ra-modal-close" aria-label="Close login modal" data-modal-close>&#10006;</button>
-      
-      <div class="ra-modal-grid">
-        <!-- Left Panel - Visual/Welcome -->
-        <div class="ra-modal-visual">
-          <div class="ra-modal-visual-content">
-            <h3>Welcome!</h3>
-            <p>Login to browse more jobs!<br>Don't have an account yet?</p>
-            <button class="ra-btn-switch" id="ra-switch-to-signup">Sign up</button>
-          </div>
-          <div class="ra-modal-logo">
-            <img src="../image-source/ramasia - transparent - red.png" alt="Ramasia Logo">
-            <span>RAMASIA</span>
-          </div>
-        </div>
 
-        <!-- Right Panel - Login Form -->
-        <div class="ra-modal-form">
-          <h2 id="ra-login-title" class="ra-modal-title">Login</h2>
-          <form id="ra-login-form">
-            <div class="ra-form-group">
-              <label for="ra-login-email">Email</label>
-              <input type="email" id="ra-login-email" name="email" placeholder="Email" required>
-            </div>
-            
-            <div class="ra-form-group">
-              <label for="ra-login-password">Password</label>
-              <input type="password" id="ra-login-password" name="password" placeholder="Password" required>
-            </div>
-            
-            <div class="ra-form-row">
-              <div class="ra-checkbox-wrapper">
-                <input type="checkbox" id="ra-remember-me" name="remember">
-                <label for="ra-remember-me">Keep me signed in</label>
-              </div>
-              <a href="#" class="ra-forgot-link">Forgot password?</a>
-            </div>
-            
-            <button type="submit" class="ra-btn-primary">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
+  <?php
+  include_once './components/auth.php';
+  ?>
 
-    <!-- Sign Up Modal -->
-    <div class="ra-modal-container" id="ra-signup-modal" role="dialog" aria-modal="true" aria-labelledby="ra-signup-title" tabindex="-1">
-      <button class="ra-modal-close" aria-label="Close sign up modal" data-modal-close>&#10006;</button>
-      
-      <div class="ra-modal-grid">
-        <!-- Left Panel - Visual/Welcome -->
-        <div class="ra-modal-visual">
-          <div class="ra-modal-visual-content">
-            <h3>Welcome!</h3>
-            <p>Signup to browse more jobs!<br>Already have an account?</p>
-            <button class="ra-btn-switch" id="ra-switch-to-login">Login</button>
-          </div>
-          <div class="ra-modal-logo">
-            <img src="../image-source/ramasia - transparent - red.png" alt="Ramasia Logo">
-            <span>RAMASIA</span>
-          </div>
-        </div>
 
-        <!-- Right Panel - Sign Up Form -->
-        <div class="ra-modal-form">
-          <h2 id="ra-signup-title" class="ra-modal-title">Sign Up</h2>
-          <form id="ra-signup-form">
-            <div class="ra-form-group">
-              <label for="ra-signup-email">Email</label>
-              <input type="email" id="ra-signup-email" name="email" placeholder="Email" required>
-            </div>
-            
-            <div class="ra-form-group">
-              <label for="ra-signup-password">Password</label>
-              <input type="password" id="ra-signup-password" name="password" placeholder="Password" required>
-            </div>
-            
-            <div class="ra-form-group">
-              <label for="ra-signup-confirm-password">Confirm Password</label>
-              <input type="password" id="ra-signup-confirm-password" name="confirmPassword" placeholder="Confirm Password" required>
-            </div>
-            
-            <div class="ra-form-group">
-              <label for="ra-signup-gender">Gender</label>
-              <select id="ra-signup-gender" name="gender" required>
-                <option value="" disabled selected>Select gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Prefer not to say</option>
-              </select>
-            </div>
-            
-            <div class="ra-form-row">
-              <div class="ra-checkbox-wrapper">
-                <input type="checkbox" id="ra-terms" name="terms" required>
-                <label for="ra-terms">You accept our Terms, Condition and Policy</label>
-              </div>
-            </div>
-            
-            <button type="submit" class="ra-btn-primary">Register Now</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ===================================
-       Modal JavaScript
-       =================================== -->
-  <script>
-    (function() {
-      'use strict';
-
-      const backdrop = document.getElementById('ra-modal-backdrop');
-      const loginModal = document.getElementById('ra-login-modal');
-      const signupModal = document.getElementById('ra-signup-modal');
-      const switchToSignupBtn = document.getElementById('ra-switch-to-signup');
-      const switchToLoginBtn = document.getElementById('ra-switch-to-login');
-      const closeButtons = document.querySelectorAll('[data-modal-close]');
-      const loginForm = document.getElementById('ra-login-form');
-      const signupForm = document.getElementById('ra-signup-form');
-
-      let currentModal = null;
-      let isAnimating = false;
-
-      function openModal(modalType) {
-        if (isAnimating) return;
-        if (!backdrop || !loginModal || !signupModal) return;
-
-        isAnimating = true;
-        const targetModal = modalType === 'login' ? loginModal : signupModal;
-        const otherModal = modalType === 'login' ? signupModal : loginModal;
-
-        if (otherModal.classList.contains('active')) {
-          otherModal.classList.remove('active');
-          otherModal.classList.add('ra-fade-out');
-          setTimeout(() => {
-            otherModal.classList.remove('ra-fade-out');
-          }, 300);
-        }
-
-        backdrop.classList.add('active');
-        backdrop.setAttribute('aria-hidden', 'false');
-
-        targetModal.setAttribute('aria-hidden', 'false');
-        targetModal.classList.add('active');
-        targetModal.classList.add('ra-fade-in');
-        currentModal = targetModal;
-
-        document.body.style.overflow = 'hidden';
-
-        setTimeout(() => {
-          const firstInput = targetModal.querySelector('input, button');
-          if (firstInput) firstInput.focus();
-          isAnimating = false;
-        }, 100);
-      }
-
-      function closeModal() {
-        if (isAnimating || !currentModal) return;
-
-        isAnimating = true;
-
-        currentModal.classList.remove('ra-fade-in');
-        currentModal.classList.add('ra-fade-out');
-        backdrop.classList.remove('active');
-
-        setTimeout(() => {
-          currentModal.classList.remove('active');
-          currentModal.classList.remove('ra-fade-out');
-          currentModal.setAttribute('aria-hidden', 'true');
-          backdrop.setAttribute('aria-hidden', 'true');
-          currentModal = null;
-
-          document.body.style.overflow = '';
-          isAnimating = false;
-        }, 300);
-      }
-
-      function switchModal(fromType, toType) {
-        if (isAnimating) return;
-        closeModal();
-        setTimeout(() => {
-          openModal(toType);
-        }, 350);
-      }
-
-      if (switchToSignupBtn) {
-        switchToSignupBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          switchModal('login', 'signup');
-        });
-      }
-
-      if (switchToLoginBtn) {
-        switchToLoginBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          switchModal('signup', 'login');
-        });
-      }
-
-      closeButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          closeModal();
-        });
-      });
-
-      if (backdrop) {
-        backdrop.addEventListener('click', (e) => {
-          if (e.target === backdrop) {
-            closeModal();
-          }
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && currentModal) {
-          closeModal();
-        }
-      });
-
-      if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          console.log('Login form submitted');
-        });
-      }
-
-      if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          console.log('Signup form submitted');
-        });
-      }
-
-      window.openRamasiaModal = openModal;
-    })();
-  </script>
 </body>
+
 </html>
+
+<script>
+  // Enable map interactivity on first click while keeping it static by default
+  (function () {
+    const container = document.getElementById('gmap-container');
+    if (!container) return;
+    container.addEventListener('click', function () {
+      container.classList.remove('is-disabled');
+    }, { once: true });
+  })();
+</script>

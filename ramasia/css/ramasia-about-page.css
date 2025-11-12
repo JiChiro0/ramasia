@@ -231,7 +231,7 @@ body, html {
   position: relative;
   width: 100%;
   min-height: 50vh;
-  background: url("about-image-1.jpg") center/cover no-repeat;
+  background: url("../../image-source/about-image-1.jpg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;

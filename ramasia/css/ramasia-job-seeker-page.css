@@ -23,7 +23,7 @@ html, body { margin: 0; padding: 0; color: var(--text); background: #fff; font-f
 .hero {
   position: relative;
   height: 350px;
-  background: url('../image-source/job-seeker-hero-image.webp') center/cover no-repeat;
+  background: url('../../image-source/job-seeker-hero-image.webp') center/cover no-repeat;
   display: grid;
   place-items: center;
   overflow: hidden;

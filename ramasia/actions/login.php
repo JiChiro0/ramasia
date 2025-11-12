@@ -1,38 +1,84 @@
 <?php
- include_once '../db/config.php';
- // Check if form submitted
+require_once '../vendor/autoload.php';
+include_once '../db/config.php';
+use Firebase\JWT\JWT;
+use Dotenv\Dotenv;
+$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+session_start();
+
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    $user = $_POST['username'];
-    $pass = $_POST['password'];
+    $user = $_POST['username'] ?? "";
+    $pass = $_POST['password'] ?? "";
+
 
     // Prepare SQL statement
-    $query = "SELECT `password` FROM auth WHERE username = ?";
-    $stmt = mysqli_prepare($conn, $query);
+    $query = "SELECT `password` , `username` FROM auth WHERE username = ?";
 
-    if ($stmt) {
-        mysqli_stmt_bind_param($stmt, "s", $user);
-        mysqli_stmt_execute($stmt);
-        mysqli_stmt_store_result($stmt);
+    $stmt = $conn->prepare($query);
 
-        // Check if username exists
-        if (mysqli_stmt_num_rows($stmt) > 0) {
-            mysqli_stmt_bind_result($stmt, $hashed_pass);
-            mysqli_stmt_fetch($stmt);
+    $stmt->bind_param("s", $user);
 
+
+
+    if ($stmt->execute()) {
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $hashed_pass = $row['password'];
+            $username = $row['username'];
             // Verify password
-            if (password_verify($pass, $hashed_pass)) {
-                echo "Login successful! Welcome, " . htmlspecialchars($user);
+            $auth = password_verify($pass, $hashed_pass);
+            if ($auth) {
+                $payload = [
+                    'username' => $user,
+                    'iat' => time(),
+                    'exp' => time() + 3600 // Token valid for 1 hour
+                ];
+                
+                $jwt = JWT::encode($payload, $_ENV['SECRET_KEY'], 'HS256');
+                $_SESSION['jwt'] = $jwt;
+                $_SESSION['username'] = $username;
+                echo $jwt;
+                exit();
             } else {
-                echo "Invalid password!";
+                echo "err";
             }
         } else {
-            echo "Username not found!";
+            echo "User not found";
         }
-
-        mysqli_stmt_close($stmt);
-    } else {
-        echo "Error preparing statement: " . mysqli_error($conn);
     }
+
+
+
+
+    // $stmt = mysqli_prepare($conn, $query);
+
+    // if ($stmt) {
+    //     mysqli_stmt_bind_param($stmt, "s", $user);
+    //     mysqli_stmt_execute($stmt);
+    //     mysqli_stmt_store_result($stmt);
+
+    //     // Check if username exists
+    //     if (mysqli_stmt_num_rows($stmt) > 0) {
+    //         mysqli_stmt_bind_result($stmt, $hashed_pass);
+    //         mysqli_stmt_fetch($stmt);
+
+    //         // Verify password
+    //         if (password_verify($pass, $hashed_pass)) {
+    //             echo "Login successful! Welcome, " . htmlspecialchars($user);
+    //         } else {
+    //             echo "Invalid password!";
+    //         }
+    //     } else {
+    //         echo "Username not found!";
+    //     }
+
+    //     mysqli_stmt_close($stmt);
+    // } else {
+    //     echo "Error preparing statement: " . mysqli_error($conn);
+    // }
 }
 
 mysqli_close($conn);
