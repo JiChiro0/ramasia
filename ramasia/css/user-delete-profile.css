@@ -1,0 +1,243 @@
+/* user-delete.css */
+
+/* --- Page Layout --- */
+.dashboard-content {
+    padding: 30px;
+    min-height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-content h2 {
+    color: #C51028; /* Ramasia Red */
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* --- Container --- */
+.delete-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+/* --- The Danger Box --- */
+.danger-box {
+    background: white;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border-top: 6px solid #dc3545; /* Danger Red Border */
+}
+
+/* Header */
+.warning-header {
+    background-color: #fff5f5; /* Light Red Background */
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ffecec;
+}
+
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background-color: #ffe0e0;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px auto;
+}
+
+.icon-circle i {
+    font-size: 30px;
+    color: #dc3545;
+}
+
+.warning-header h3 {
+    color: #a71d2a;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.warning-header p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* Details List */
+.warning-details {
+    padding: 25px 40px;
+}
+
+.warning-details p {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.warning-details ul {
+    list-style: none;
+    padding: 0;
+}
+
+.warning-details li {
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.warning-details li i {
+    color: #dc3545;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Form Area */
+.delete-form {
+    padding: 0 40px 40px 40px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.input-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 10px 10px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-wrapper input:focus {
+    border-color: #dc3545;
+}
+
+/* Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.checkbox-group input {
+    margin-top: 4px;
+    accent-color: #dc3545;
+    width: 16px;
+    height: 16px;
+}
+
+.checkbox-group label {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-cancel {
+    flex: 1;
+    background: white;
+    border: 1px solid #ddd;
+    color: #555;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cancel:hover {
+    background-color: #f9f9f9;
+}
+
+.btn-delete {
+    flex: 1;
+    background: #dc3545;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+.btn-delete:hover {
+    background: #b02a37;
+}
+
+/* Help Text Bottom */
+.help-text {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #777;
+}
+
+.help-text a {
+    color: #C51028;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.help-text a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: auto;
+    padding-top: 40px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .danger-box {
+        border-radius: 10px;
+    }
+    
+    .warning-details, .delete-form {
+        padding: 20px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+}

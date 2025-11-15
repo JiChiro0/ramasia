@@ -1,0 +1,236 @@
+/* user-applied.css */
+
+/* --- Page Specific Layout --- */
+.dashboard-content {
+    padding: 30px;
+    /* Ensure it takes remaining height if content is small */
+    min-height: calc(100vh - 150px); 
+}
+
+.dashboard-content h2 {
+    color: #C51028;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+/* --- Container Box --- */
+.applied-container {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+/* --- Header Area (Search & Sort) --- */
+.applied-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Allows wrapping on mobile */
+    gap: 15px;
+}
+
+/* Search Bar */
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.search-bar {
+    width: 250px;
+    padding: 10px 10px 10px 35px; /* padding-left for icon */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar:focus {
+    border-color: #C51028;
+}
+
+/* Sort Dropdown */
+.sort {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.sort select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    color: #333;
+    outline: none;
+}
+
+/* --- Content Area --- */
+.applied-box {
+    min-height: 300px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    border: 2px dashed #e0e0e0;
+    
+    /* Center the content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-state {
+    text-align: center;
+    color: #aaa;
+}
+
+.empty-state i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.no-app {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* --- Mobile Responsive --- */
+@media (max-width: 768px) {
+    .applied-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+    .sort {
+        justify-content: space-between;
+    }
+}
+
+/* --- PASTE THIS AT THE BOTTOM OF css/user-applied.css --- */
+
+/* Table Wrapper (allows scroll on mobile) */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; 
+}
+
+/* The Table Itself */
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Forces horizontal scroll if screen is too small */
+}
+
+/* Table Headers */
+.job-table th {
+    text-align: left;
+    padding: 15px;
+    background-color: #f9f9f9;
+    color: #666;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #eee;
+}
+
+/* Table Cells */
+.job-table td {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Job Title Column Styling */
+.job-title-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.job-title-cell .title {
+    font-weight: 700;
+    color: #333;
+    font-size: 15px;
+}
+
+.job-title-cell .type {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* --- Status Badges (The colorful pills) --- */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+/* 1. Pending (Orange) */
+.status-pending {
+    background-color: #fff8e1;
+    color: #f57c00;
+    border: 1px solid #ffe0b2;
+}
+
+/* 2. Interview (Blue) */
+.status-interview {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    border: 1px solid #bbdefb;
+}
+
+/* 3. Rejected (Red) */
+.status-rejected {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #ffcdd2;
+}
+
+/* 4. Hired (Green) */
+.status-hired {
+    background-color: #e8f5e9;
+    color: #388e3c;
+    border: 1px solid #c8e6c9;
+}
+
+/* --- Action Button --- */
+.btn-view {
+    padding: 6px 16px;
+    background-color: white;
+    color: #C51028;
+    border: 1px solid #C51028;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-view:hover {
+    background-color: #C51028;
+    color: white;
+}

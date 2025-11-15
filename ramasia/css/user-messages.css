@@ -1,0 +1,200 @@
+/* user-messages.css */
+
+/* --- Layout & Header --- */
+.dashboard-content {
+    padding: 30px;
+    min-height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.content-header h2 {
+    color: #C51028;
+    font-weight: 700;
+    margin: 0;
+}
+
+.btn-compose {
+    background-color: #C51028;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+.btn-compose:hover {
+    background-color: #a00d21;
+}
+
+/* --- Messages Container --- */
+.messages-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    overflow: hidden; /* Keeps content inside rounded corners */
+    flex-grow: 1; /* Fills remaining height */
+}
+
+/* List Header */
+.msg-list-header {
+    padding: 15px 20px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.msg-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.msg-actions i {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.msg-actions i:hover {
+    color: #C51028;
+}
+
+/* --- Message Items --- */
+.message-item {
+    display: flex;
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.message-item:last-child {
+    border-bottom: none;
+}
+
+.message-item:hover {
+    background-color: #fdfdfd;
+}
+
+/* Unread State Styling */
+.message-item.unread {
+    background-color: #fff5f6; /* Very light red tint */
+    border-left: 3px solid #C51028;
+}
+
+/* Avatars */
+.msg-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.text-avatar {
+    background-color: #C51028;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.text-avatar.secondary {
+    background-color: #888;
+}
+
+/* Message Body */
+.msg-body {
+    flex-grow: 1;
+    min-width: 0; /* Fixes text truncation */
+}
+
+.msg-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.msg-sender {
+    font-size: 15px;
+    font-weight: 600; /* Normal weight for read messages */
+    color: #333;
+    margin: 0;
+}
+
+.unread .msg-sender {
+    font-weight: 700; /* Bold for unread */
+    color: #000;
+}
+
+.msg-date {
+    font-size: 12px;
+    color: #999;
+    white-space: nowrap;
+}
+
+.unread .msg-date {
+    color: #C51028;
+    font-weight: 600;
+}
+
+.msg-subject {
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: #444;
+    font-weight: 500;
+}
+
+.unread .msg-subject {
+    font-weight: 700;
+}
+
+.msg-preview {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Badge */
+.badge {
+    background-color: #C51028;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: 400;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: auto;
+    padding-top: 20px;
+}

@@ -1,0 +1,114 @@
+/* START: user-resume.css */
+/* This file styles the "My Resume" page content */
+
+/* We use the same .dashboard-content h2 from user-dashboard.css */
+
+/* Main content card styling */
+.resume-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.resume-section h3 {
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.section-description {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #C51028;
+    box-shadow: 0 0 0 3px rgba(197, 16, 40, 0.1);
+}
+
+/* Button Styling */
+.btn {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #C51028;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #a00d21;
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-save {
+    font-size: 16px;
+    padding: 14px 25px;
+}
+
+.resume-section-footer {
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* File Upload Specifics */
+.file-upload-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Wraps on mobile */
+}
+
+.file-input {
+    display: none; /* We hide the default input */
+}
+
+.file-note {
+    font-size: 13px;
+    color: #777;
+}
+
+/* END: user-resume.css */

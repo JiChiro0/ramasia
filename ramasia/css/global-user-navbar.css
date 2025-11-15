@@ -1,0 +1,200 @@
+/* START: global-user-navbar.css */
+
+/* --- Main Navbar Container --- */
+.navbar {
+    display: flex;
+    justify-content: center; /* Centers links on desktop */
+    align-items: center;
+    width: 95%;
+    max-width: 1200px;
+    padding: 15px 40px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    z-index: 1050;
+
+    /* --- DESKTOP POSITIONING --- */
+    position: fixed;
+    top: 20px;
+    /* Position it relative to the content area, which starts at the sidebar's width */
+    left: var(--sidebar-width, 250px);
+    right: 0;
+    /* Center it (margin: auto) within that new space */
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Add a transition to follow the sidebar collapse */
+    transition: left 0.3s ease-in-out; 
+}
+
+/* --- Desktop Links --- */
+.navbar-links ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 50px; 
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: #C51028;
+    font-weight: 500; 
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+    color: #a00d21; 
+}
+
+/* --- Mobile Elements (Hidden on Desktop) --- */
+.navbar-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Sidebar toggle button (left) - Double arrow */
+.navbar-toggle.sidebar-open-toggle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #C51028;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    line-height: 1;
+    width: auto;
+    height: auto;
+}
+/* Menu toggle button (right) - Hamburger */
+.navbar-toggle.menu-toggle {
+    width: 30px;
+    height: 22px;
+    padding: 0;
+}
+
+.navbar-toggle .icon-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #C51028;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.navbar-toggle .icon-bar + .icon-bar {
+    margin-top: 5px;
+}
+
+.navbar-logo-mobile {
+    display: none; /* Hide mobile logo by default */
+    color: #C51028;
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* --- Mobile Navbar Overlay (Hidden on Desktop) --- */
+.navbar-overlay {
+    display: block;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1100; /* Above everything */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-overlay-menu {
+    position: absolute;
+    top: 85px; /* Sits just below the pill navbar */
+    right: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.navbar-overlay-menu a {
+    display: block;
+    padding: 10px 20px;
+    color: #C51028;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.navbar-overlay-menu a:hover {
+    background-color: #f5f5f5;
+}
+
+/* --- JS-Toggled State for Navbar Overlay --- */
+body.navbar-open .navbar-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.navbar-open .navbar-overlay-menu {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animate the 'X' */
+body.navbar-open #navbar-open-toggle .icon-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+body.navbar-open #navbar-open-toggle .icon-bar:nth-child(2) {
+    opacity: 0;
+}
+body.navbar-open #navbar-open-toggle .icon-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 1000px) {
+    .navbar {
+        /* --- MOBILE POSITIONING (OVERRIDE) --- */
+        /* Re-center it in the viewport */
+        left: 50%; /* Position the left edge at the center */
+        transform: translateX(-50%); /* Shift it back by half its width */
+        
+        /* Remove the sidebar-based left property */
+        right: auto; 
+        transition: none; /* No transition on mobile */
+        
+        /* (rest of the mobile .navbar rules) */
+        padding: 12px 20px;
+        display: grid;
+        grid-template-columns: auto 1fr auto; 
+        align-items: center;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: flex; /* Both buttons show on mobile */
+    }
+    
+    .navbar-logo-mobile {
+        display: block;
+        justify-self: center;
+        grid-column: 2; /* This centers the logo */
+    }
+
+    .navbar-toggle.menu-toggle {
+        grid-column: 3; /* Put the right toggle in the 3rd column */
+        justify-self: end; /* Push it to the far right */
+    }
+}
+/* END: global-user-navbar.css */

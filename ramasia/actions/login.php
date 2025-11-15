@@ -1,4 +1,4 @@
-<?php
+    <?php
 require_once '../vendor/autoload.php';
 include_once '../db/config.php';
 use Firebase\JWT\JWT;

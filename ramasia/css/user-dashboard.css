@@ -1,0 +1,208 @@
+/* START: user-dashboard.css */
+
+/* --- CSS RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f5f5ff;
+    font-family: 'Sarala', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden; 
+}
+
+/* --- MAIN PAGE LAYOUT --- */
+.container {
+    display: grid;
+    grid-template-columns: var(--sidebar-width, 250px) 1fr;
+    height: 100vh; 
+    transition: grid-template-columns 0.3s ease-in-out;
+}
+
+/* --- GRID COLUMNS --- */
+.sidebar,
+.dashboard {
+    overflow-y: auto;
+    height: 100vh;
+}
+.dashboard {
+    background-color: #f9f9f9;
+    padding-top: var(--navbar-height, 100px);
+}
+
+/* --- DASHBOARD CONTENT STYLING --- */
+.dashboard-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+.dashboard-content h2 {
+    color: #C51028;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 1.8rem;
+}
+
+/* --- Profile Section --- */
+.profile-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.profile-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.profile-pic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #f0f0f0;
+}
+.profile-card h3 {
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #333;
+}
+.profile-card p {
+    color: #777;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+/* --- STATS BOXES --- */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    flex: 1;
+}
+.stat-box {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.stat-box .icon {
+    font-size: 2rem;
+    border-radius: 8px;
+    color: white;
+    
+    /* --- THIS IS THE FIX --- */
+    /* 1. Set a fixed size for the box */
+    width: 55px;
+    height: 55px;
+    
+    /* 2. Use flex to center the <i> icon inside */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* We remove padding since we have a fixed size */
+}
+/* (Your icon colors) */
+.stats .stat-box:nth-child(1) .icon { background-color: #4a90e2; }
+.stats .stat-box:nth-child(2) .icon { background-color: #50e3c2; }
+.stats .stat-box:nth-child(3) .icon { background-color: #f5a623; }
+.stats .stat-box:nth-child(4) .icon { background-color: #d0021b; }
+
+.stat-box h3 {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 500;
+}
+.stat-box p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* --- PROFILE VIEWS GRAPH --- */
+.profile-views {
+    background: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-top: 30px;
+}
+.profile-views h3 {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+}
+.graph-placeholder {
+    background-color: #fdf6f7;
+    border-radius: 10px;
+    height: 250px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C51028;
+    font-weight: 500;
+    border: 1px dashed #ffe6ea;
+}
+
+/*
+===============================================
+  RESPONSIVE & MOBILE STYLES
+===============================================
+*/
+@media (max-width: 1000px) {
+    .navbar-links { 
+        display: none; 
+    }
+    .sidebar-collapse-toggle { 
+        display: none; 
+    }
+    .navbar-toggle { 
+        display: block; 
+    }
+    .navbar-logo-mobile { 
+        display: block; 
+    }
+    .container {
+        grid-template-columns: 1fr; 
+        overflow: hidden; 
+    }
+    .dashboard {
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 20px 15px;
+    }
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .profile-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
+/* END: user-dashboard.css */

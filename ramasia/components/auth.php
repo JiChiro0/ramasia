@@ -178,7 +178,7 @@
           if (response) {
             // Show alert message
             localStorage.setItem("token", response);
-            window.location.href = "dashboard-profile.php";
+            window.location.href = "user-dashboard.php";
           } else {
             $("#alert")
               .removeAttr("hidden")
