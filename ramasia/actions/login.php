@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 
     // Prepare SQL statement
-    $query = "SELECT `password` , `username`, `user_id` FROM auth WHERE username = ?";
+    $query = "SELECT `password` , `username`, `id`, `role` FROM auth WHERE username = ?";
 
     $stmt = $conn->prepare($query);
 
@@ -28,7 +28,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $row = $result->fetch_assoc();
             $hashed_pass = $row['password'];
             $username = $row['username'];
-            $user_id = $row['user_id'];
+            $user_id = $row['id'];
+            $role = $row['role'];
             // Verify password
             $auth = password_verify($pass, $hashed_pass);
             if ($auth) {
@@ -42,7 +43,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 $_SESSION['jwt'] = $jwt;
                 $_SESSION['username'] = $username;
                 $_SESSION['user_id'] = $user_id;
-                echo "Authenticated";
+
+                if ($role == 'admin') {
+                    echo "admin";
+                } else {
+                    echo "user";
+                }
                 exit();
             } else {
                 echo "err";

@@ -18,7 +18,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_passwo
     }
 
     // 1. Fetch user from DB
-    $sql = "SELECT password FROM auth WHERE user_id = ?";
+    $sql = "SELECT password FROM auth WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
@@ -41,7 +41,7 @@ if (isset($_POST['old_password'], $_POST['new_password'], $_POST['confirm_passwo
     $new_hash = password_hash($new_password, PASSWORD_BCRYPT);
 
     // 4. Update password securely
-    $sql = "UPDATE auth SET password = ? WHERE user_id = ?";
+    $sql = "UPDATE auth SET password = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $new_hash, $user_id);
 

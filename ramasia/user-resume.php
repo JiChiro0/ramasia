@@ -3,7 +3,7 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ramsia";
+$dbname = "ramasia";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {

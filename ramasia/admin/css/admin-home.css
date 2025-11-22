@@ -1,0 +1,253 @@
+/* css/admin-home.css */
+
+:root {
+    --bg-color: #F5F5F6;
+    --text-dark: #222;
+    --text-light: #666;
+    --card-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    --radius: 10px;
+    --brand-red: #C51028;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+    font-family: 'Sarala', sans-serif;
+    color: var(--text-dark);
+}
+
+/* Main Content Wrapper */
+/* On Desktop, move content to the right of the sidebar */
+.main-content {
+    margin-left: 250px; /* Must match sidebar width */
+    padding: 30px;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* --- Metrics Section --- */
+.metrics-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+.metric-card {
+    background: white;
+    flex: 1;
+    padding: 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.metric-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #FFF0F2;
+    color: var(--brand-red);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+.metric-card h2 { margin: 0; font-size: 26px; line-height: 1; }
+.metric-card p { margin: 5px 0 0 0; color: var(--text-light); font-size: 14px; font-weight: 600; }
+
+/* --- Split View (Filter + Table) --- */
+.content-split {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+/* Left Panel */
+.filter-panel {
+    width: 260px;
+    flex-shrink: 0;
+}
+.search-btn {
+    width: 100%;
+    background: var(--brand-red);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: var(--radius);
+    font-family: 'Sarala', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.2s;
+}
+.filter-box {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+}
+.filter-box h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+.filter-group { margin-bottom: 20px; }
+.filter-group h4 {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.filter-group label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.filter-group input {
+    margin-right: 10px;
+    accent-color: var(--brand-red);
+}
+.clear-btn {
+    width: 100%;
+    padding: 8px;
+    background: white;
+    border: 1px solid var(--brand-red);
+    color: var(--brand-red);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Right Panel (Table) */
+.results-panel {
+    flex-grow: 1;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    padding: 20px;
+    overflow-x: auto; /* Allows table scrolling on small screens */
+}
+.results-header { margin-bottom: 15px; }
+.results-count {
+    background: var(--brand-red);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Ensures table doesn't squash too much */
+}
+.user-table th {
+    text-align: left;
+    padding: 15px;
+    background-color: #f9f9f9;
+    color: #666;
+    font-weight: 700;
+    font-size: 14px;
+    border-bottom: 2px solid #eee;
+}
+.user-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 14px;
+}
+
+/* Status Badges */
+.status {
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+.status.hired { color: #155724; background-color: #d4edda; }
+.status.inprogress { color: #856404; background-color: #fff3cd; }
+
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    
+    /* On mobile, remove the margin so content is full-width */
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+        box-sizing: border-box; /* Prevents padding from breaking width */
+    }
+
+    /* Stack Metrics cards vertically */
+    .metrics-container {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* Stack Filter and Table vertically */
+    .content-split {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Make Filter Panel full-width */
+    .filter-panel {
+        width: 100%;
+    }
+}
+
+/* =========================================
+   FORCE FIX: STICKY ELEMENTS
+   Paste this at the bottom of css/admin-home.css
+========================================= */
+
+/* 1. Reset Body Context 
+   This ensures the body acts as the viewport anchor, 
+   preventing elements from scrolling away. */
+html, body {
+    overflow-x: hidden !important; /* Prevents horizontal scroll causing drift */
+    transform: none !important;    /* Kills any transform that breaks fixed pos */
+    -webkit-transform: none !important;
+    height: auto !important;
+    min-height: 100% !important;
+}
+
+/* 2. Force Sidebar Stickiness 
+   We use the #ID selector for maximum priority */
+#sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    height: 100dvh !important; /* Dynamic Viewport Height */
+    z-index: 9999 !important;  /* Force it to be on top */
+}
+
+/* 3. Force Toggle Button Float
+   We use transform: translateZ(0) to force the browser 
+   to use the GPU, which makes the "stickiness" smoother on mobile. */
+#sidebarToggle {
+    position: fixed !important;
+    bottom: 30px !important;
+    left: 30px !important; /* Or 'right: 30px' if you prefer */
+    z-index: 10000 !important; /* Above the sidebar */
+    transform: translateZ(0) !important; 
+    display: flex !important; /* Ensure it's visible for testing */
+}
+
+/* Hide button on Desktop (Overriding the force-show above) */
+@media (min-width: 769px) {
+    #sidebarToggle {
+        display: none !important;
+    }
+}

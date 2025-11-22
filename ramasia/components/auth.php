@@ -188,10 +188,13 @@
                 $(this).attr("hidden", true); // hide again after fade out
               });
             }, 3000);
-          } else {
+          } else if (response == 'admin') {
+            localStorage.setItem("token", response);
+            window.location.href = "./admin/admin-home.php";
+
+          } else if (response == "user") {
             localStorage.setItem("token", response);
             window.location.href = "./user-dashboard.php";
-
           }
         },
         error: function (xhr, status, error) {
