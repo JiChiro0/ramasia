@@ -39,7 +39,7 @@
         <span class="icon"><i class="bi bi-trash-fill"></i></span> 
         <span class="text">Delete Profile</span>
     </a>
-    <a href="#">
+    <a href="./actions/logout.php">
         <span class="icon"><i class="bi bi-box-arrow-right"></i></span> 
         <span class="text">Logout</span>
     </a>

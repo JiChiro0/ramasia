@@ -1,4 +1,4 @@
-    <?php
+<?php
 require_once '../vendor/autoload.php';
 include_once '../db/config.php';
 use Firebase\JWT\JWT;
@@ -13,7 +13,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 
     // Prepare SQL statement
-    $query = "SELECT `password` , `username` FROM auth WHERE username = ?";
+    $query = "SELECT `password` , `username`, `user_id` FROM auth WHERE username = ?";
 
     $stmt = $conn->prepare($query);
 
@@ -28,6 +28,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $row = $result->fetch_assoc();
             $hashed_pass = $row['password'];
             $username = $row['username'];
+            $user_id = $row['user_id'];
             // Verify password
             $auth = password_verify($pass, $hashed_pass);
             if ($auth) {
@@ -36,11 +37,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                     'iat' => time(),
                     'exp' => time() + 3600 // Token valid for 1 hour
                 ];
-                
+
                 $jwt = JWT::encode($payload, $_ENV['SECRET_KEY'], 'HS256');
                 $_SESSION['jwt'] = $jwt;
                 $_SESSION['username'] = $username;
-                echo $jwt;
+                $_SESSION['user_id'] = $user_id;
+                echo "Authenticated";
                 exit();
             } else {
                 echo "err";

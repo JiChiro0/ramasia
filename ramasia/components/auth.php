@@ -174,12 +174,8 @@
         type: "POST",
         data: { username: username, password: password },
         success: function (response) {
-          console.log(response)
-          if (response) {
-            // Show alert message
-            localStorage.setItem("token", response);
-            window.location.href = "user-dashboard.php";
-          } else {
+          console.log(response);
+          if (response == "err") {
             $("#alert")
               .removeAttr("hidden")
               .hide()                 // ensure it's hidden before fadeIn
@@ -192,6 +188,9 @@
                 $(this).attr("hidden", true); // hide again after fade out
               });
             }, 3000);
+          } else {
+            localStorage.setItem("token", response);
+            window.location.href = "./user-dashboard.php";
 
           }
         },

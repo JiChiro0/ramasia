@@ -1,5 +1,10 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,25 +16,26 @@
     <link rel="stylesheet" href="./css/global-user-sidebar.css">
     <link rel="stylesheet" href="./css/global-user-navbar.css">
     <link rel="stylesheet" href="./css/user-dashboard.css">
-    
     <link rel="stylesheet" href="./css/user-changepassword.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 <body>
 
     <div class="container">
-        
+
         <aside id="sidebar-container" class="sidebar"></aside>
 
         <main class="dashboard">
-            
+
             <header id="navbar-container" class="navbar"></header>
 
             <section class="dashboard-content">
-                
+              
                 <h2>Change Password</h2>
 
                 <div class="password-container">
-                    
+
                     <div class="password-box">
                         <div class="box-header">
                             <i class="bi bi-shield-lock"></i>
@@ -37,7 +43,7 @@
                         </div>
 
                         <form class="password-form">
-                            
+
                             <div class="form-group">
                                 <label for="current-pass">Current Password</label>
                                 <div class="input-wrapper">
@@ -98,5 +104,38 @@
 
     <script src="./js-function/main.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $(".password-form").submit(function (e) {
+                e.preventDefault();
+
+                var old_password = $("#current-pass").val();
+                var new_password = $("#new-pass").val();
+                var repass = $("#confirm-pass").val();
+
+                console.log("Old Password: " + old_password);
+                console.log("New Password: " + new_password);
+                console.log("Re-enter Password: " + repass);
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "./actions/update_password.php",
+                    data: {
+                        old_password: old_password,
+                        new_password: new_password,
+                        confirm_password: repass
+                    },
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
 </body>
+
 </html>

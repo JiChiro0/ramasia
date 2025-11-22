@@ -14,14 +14,7 @@ if (isset($_FILES['pdf'])){
     $targetFilePath = $uploadDirectory . '/' . $fileName;
     $fileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
 
-    // Validate file type (only allow PDF)
-    // if ($fileType != 'pdf') {
-    //     echo json_encode(['message' => 'Error: Only PDF files are allowed.']);
-    //     exit;
-    // }
-
     if (move_uploaded_file($_FILES['pdf']['tmp_name'], $targetFilePath)) {
-        // echo json_encode(['message' => "Uploaded: $targetFilePath"]);
         $query = "INSERT INTO `resume_table`(`email`, `degree`, `university`, `job_title`, `company`, `resume_path`) VALUES(?,?,?,?,?,?)";
         $stmt = $conn->prepare($query);
 
